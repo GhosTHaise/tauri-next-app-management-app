@@ -64,10 +64,10 @@
     "windows": [
       {
         "fullscreen": false,
-        "height": 600,
+        "height": 720,
         "resizable": true,
         "title": "my_first_tauri_app",
-        "width": 800
+        "width": 1250
       }
     ]
   }

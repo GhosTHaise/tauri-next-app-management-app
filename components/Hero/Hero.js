@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 const Hero = () => {
   return (
-    <div className={styles.weather_app}>
+    <div className={styles.weather_app} style={{backgroundImage : "url('/assets/Day/cloudy.jpg')"}}>
         <div className={styles.container}>
             <h3 className={styles.brand}>
                 The weather

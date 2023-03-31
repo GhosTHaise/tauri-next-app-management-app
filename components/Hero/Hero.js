@@ -1,10 +1,15 @@
 import {useEffect,useState} from 'react'
+import { invoke } from '@tauri-apps/api/tauri';
 import styles from "./Hero.module.css";
 import Image from 'next/image';
 
 const Hero = () => {
     const [system_date, setSystem_date] = useState("");
-
+    useEffect(()=>{
+        invoke("get_date")
+        .then(date=> setSystem_date(date))
+        .catch(e => console.log(e))
+    },[])
     
   return (
     <div className={styles["weather_app"]} style={{backgroundImage : "url('/assets/Day/cloudy.jpg')"}}>

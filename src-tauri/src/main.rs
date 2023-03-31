@@ -7,10 +7,13 @@
 fn greet(name: &str) -> String {
    format!("Hello, {}!", name)
 }
-
+mod utils;
 fn main() {
   tauri::Builder::default()
-    .invoke_handler(tauri::generate_handler![greet])
+    .invoke_handler(tauri::generate_handler![
+      greet,
+      utils::Fetch_date::get_date
+      ])
     .run(tauri::generate_context!())
     .expect("error while running tauri application");
 }

@@ -1,8 +1,11 @@
-import React from 'react'
+import {useEffect,useState} from 'react'
 import styles from "./Hero.module.css";
 import Image from 'next/image';
 
 const Hero = () => {
+    const [system_date, setSystem_date] = useState("");
+
+    
   return (
     <div className={styles["weather_app"]} style={{backgroundImage : "url('/assets/Day/cloudy.jpg')"}}>
         <div className={styles.container}>
@@ -16,9 +19,7 @@ const Hero = () => {
                 <div className={styles.city_time}>
                     <h1 className={styles.name}>London</h1>
                     <small>
-                        <span className={styles.time}>06:09</span>
-                        -
-                        <span className={styles.date}>Monday Sep 19</span>
+                        <span className={styles.time}>{system_date}</span>
                     </small>
                 </div>
                 <div className={styles.weather}>

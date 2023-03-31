@@ -1,10 +1,15 @@
 import {useEffect,useState} from 'react'
-import { invoke } from '@tauri-apps/api/tauri';
+import { invoke} from '@tauri-apps/api/tauri';
+import {listen} from "@tauri-apps/api/event"
 import styles from "./Hero.module.css";
 import Image from 'next/image';
 
 const Hero = () => {
     const [system_date, setSystem_date] = useState("");
+    const [hour, setHour] = useState("");
+    listen("instant_hour",(event)=>{
+        setHour(event.payload );
+    })
     useEffect(()=>{
         invoke("get_date")
         .then(date=> setSystem_date(date))
@@ -24,6 +29,7 @@ const Hero = () => {
                 <div className={styles.city_time}>
                     <h1 className={styles.name}>London</h1>
                     <small>
+                        <span className={styles.time}>{hour}</span>
                         <span className={styles.time}>{system_date}</span>
                     </small>
                 </div>

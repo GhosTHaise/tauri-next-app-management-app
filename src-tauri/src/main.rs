@@ -14,6 +14,7 @@ fn main() {
   let mut app = tauri::Builder::default()
     .setup(|app|{
       let window = app.get_window("main").unwrap();
+      window.emit("instant_hour","09-09");
       utils::Fetch_date::get_instant_hour(window);
       Ok(())
     })

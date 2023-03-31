@@ -20,12 +20,14 @@ pub fn get_date() -> String{
 
 #[tauri::command]
 pub fn get_instant_hour(window : Window){
-    loop {
-        let current_time = Local::now();
-        window.emit("instant_hour", format!("{:02}:{:02}",
-        current_time.hour(),
-        current_time.minute()));
- 
-        thread::sleep(Duration::from_secs(60));
-    }
+    thread::spawn(move || {
+        loop {
+            let current_time = Local::now();
+            window.emit("instant_hour", format!("{:02}:{:02}",
+            current_time.hour(),
+            current_time.minute()));
+     
+            thread::sleep(Duration::from_secs(60));
+        }
+    });
 }   

@@ -10,6 +10,7 @@ fn greet(name: &str) -> String {
    format!("Hello, {}!", name)
 }
 mod utils;
+mod api;
 fn main() {
   let mut app = tauri::Builder::default()
     .setup(|app|{

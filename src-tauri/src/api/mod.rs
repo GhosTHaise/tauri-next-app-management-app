@@ -1,1 +1,2 @@
-pub mod Forecast;
+pub mod FetchForecast;
+mod forecast;
